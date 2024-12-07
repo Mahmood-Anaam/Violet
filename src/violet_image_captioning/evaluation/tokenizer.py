@@ -12,7 +12,7 @@ import os
 import subprocess
 import tempfile
 import re
-from light_normalizer import light_normalizer
+from violet_image_captioning.light_normalizer import light_normalizer
 class PTBTokenizer(object):
     """Python wrapper of Stanford PTBTokenizer"""
 

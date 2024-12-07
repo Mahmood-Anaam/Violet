@@ -7,7 +7,7 @@ from transformers import AutoTokenizer, GPT2TokenizerFast, GPT2Tokenizer
 from torch.utils.data import Dataset, DataLoader, Sampler
 import numpy as np
 import pickle
-from light_normalizer import light_normalizer
+from violet_image_captioning.light_normalizer import light_normalizer
 import pandas as pd
 class Coco_Dataset(Dataset):
     def __init__(self, img_root=None, ann_root=None, split="train"):
