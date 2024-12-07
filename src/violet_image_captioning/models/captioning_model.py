@@ -1,6 +1,6 @@
 import torch
 from torch import distributions
-import violet_image_captioning.utils
+import violet_image_captioning.utils as utils
 from violet_image_captioning.models.containers import Module
 from violet_image_captioning.models.beam_search import *
 

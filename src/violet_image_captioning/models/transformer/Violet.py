@@ -1,11 +1,11 @@
 import torch
 from torch import nn
 import copy
-from models.containers import ModuleList
+from violet_image_captioning.models.containers import ModuleList
 from ..captioning_model import CaptioningModel
 from transformers import AutoProcessor, CLIPVisionModelWithProjection
-from models.transformer.decoder import GPT2LMHeadModel
-from models.transformer.config import GPT2Config
+from violet_image_captioning.models.transformer.decoder import GPT2LMHeadModel
+from violet_image_captioning.models.transformer.config import GPT2Config
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 

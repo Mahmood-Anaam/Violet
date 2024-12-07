@@ -13,7 +13,7 @@ from torch.nn import LayerNorm
 from torch.nn import functional as F
 from torch.nn import LayerNorm
 from violet_image_captioning.models.containers import Module, ModuleList
-from violet_image_captioning.models.transformers import activations
+from transformers import activations
 
 def gelu(x):
     return 0.5 * x * (1 + torch.tanh(math.sqrt(2 / math.pi) * (x + 0.044715 * torch.pow(x, 3))))
