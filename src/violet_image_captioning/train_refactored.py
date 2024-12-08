@@ -35,6 +35,10 @@ from collections import defaultdict
 from pycocoevalcap.cider.cider import Cider
 from transformers import AutoTokenizer
 from light_normalizer import light_normalizer
+
+
+
+
 def check_memory(cuda_device):
     """ Check the total memory and occupied memory for GPU """
     devices_info = os.popen('"/usr/bin/nvidia-smi" --query-gpu=memory.total,memory.used --format=csv,nounits,noheader').read().strip().split("\n")
@@ -100,14 +104,15 @@ def evaluate_cider(gen_captions, ref_captions):
     return cider_score
 
 def evaluation(model, dataloader_val, ref_caps):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer = AutoTokenizer.from_pretrained("UBC-NLP/Jasmine-350M")
     model.eval()
     model = DDP(model.module)
-    model = model.to("cuda")
+    model = model.to(device)
     gen_caps = {}
     with tqdm( unit='it', total=len(dataloader_val)) as pbar:
         for it, (images, captions, ids) in enumerate(dataloader_val):
-            images, captions = images.to("cuda"), captions.to("cuda")
+            images, captions = images.to(device), captions.to(device)
 
             with torch.no_grad():
                 out, _ = model.module.beam_search(images, 40, tokenizer.vocab['<|endoftext|>'], 5, out_size=1)
@@ -222,7 +227,7 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
-    device = torch.device('cuda')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     writer = SummaryWriter(log_dir=os.path.join(args.logs_folder, args.exp_name))
 
