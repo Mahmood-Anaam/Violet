@@ -1,0 +1,2 @@
+from .violet_pipeline import VioletImageCaptioningPipeline
+from .violet_config import VioletConfig
