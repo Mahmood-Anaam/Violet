@@ -2,6 +2,8 @@
 # Violet
 ### Techincal report coming soon!
 
+https://github.com/UBC-NLP/VioletV2.git
+
 Spoilers: The model is similar to the original [paper](https://arxiv.org/abs/2311.08844) but replaces the cumbersome detection network with a CLIP vision encoder (which can be trained end-to-end without relying on an external model), and utilizes adapters on the decoder side
 ## Data
 Coco Images HDF5 file: [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/abdelrahman_mohamed_mbzuai_ac_ae/EZUDaVbRzGFJuYbYnU_jZ0YBnjZgPSuG32Z6wlLeCT22iQ?e=fI1rG0)
